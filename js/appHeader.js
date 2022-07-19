@@ -1,5 +1,6 @@
 import { handleWeatherByGeolacation } from "./geo.js";
 
+
 export const createHeader = (city) => {
     const header = document.createElement('header');
     const headerContainer = document.createElement('div');
@@ -38,7 +39,7 @@ export const createHeader = (city) => {
     unitsC.textContent = 'C';
     unitsF.textContent = 'F';
 
-    cityLocation.addEventListener ('click', handleWeatherByGeolacation());
+    cityLocation.addEventListener('click', handleWeatherByGeolacation);
 
 
     header.append(headerContainer);

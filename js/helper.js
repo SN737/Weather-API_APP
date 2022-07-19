@@ -18,9 +18,9 @@ export const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-export const resetWeatherContent = ()=> (city, weather) => {
-    document.body.innerHTML = '';
+export const resetWeatherContent = (city, weather) => {
+    document.body.innerHTML = ' ';
     const header = createHeader (city);
     const content = createContent (weather);
     document.body.append(header, content);
-}
+};

@@ -1,7 +1,6 @@
 import { getWeatherData } from "./api.js";
 import { resetWeatherContent } from "./helper.js";
 
-
 export const handleWeatherByGeolacation = () => {
     const options = {
         enableHighAccuracy: true,
@@ -18,11 +17,11 @@ export const handleWeatherByGeolacation = () => {
         const result = await response.json();
 
         const weather = await getWeatherData(result.features[0].properties.city);
+       
+
+
+        console.log('получилось',result.features[0].properties.city,  result);
         resetWeatherContent(result.features[0].properties.city, weather);
-
-
-        console.log(result);
-        
 
        /* .then( response => response.json())
         .then(result => {
