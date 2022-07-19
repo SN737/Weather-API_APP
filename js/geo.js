@@ -11,7 +11,7 @@ export const handleWeatherByGeolacation = () => {
         const crd = pos.coords;
 
         const response = await  fetch(
-            `https://api.geoapify.com/v1/geocode/reverse?lat=${crd.latitude}&lon=${crd.longitude}&apiKey=fe606fa92cc54af29de7fbb5635ed907`
+            `https://api.geoapify.com/v1/geocode/reverse?lat=${crd.latitude}&lon=${crd.longitude}&lang=ru&apiKey=fe606fa92cc54af29de7fbb5635ed907`
         );
 
         const result = await response.json();
@@ -37,7 +37,7 @@ export const handleWeatherByGeolacation = () => {
         
     };
     const error = (err) => {
-        console.log (err.code + ' !ашипке вышел ' + err.message);
+        console.log (err.code + ' !ашиПке выШел ' + err.message);
     };
     navigator.geolocation.getCurrentPosition(success, error, options);
 

@@ -19,6 +19,7 @@ export const capitalizeFirstLetter = (string) => {
 };
 
 export const resetWeatherContent = (city, weather) => {
+    localStorage.setItem('city', JSON.stringify(city));
     document.body.innerHTML = ' ';
     const header = createHeader (city);
     const content = createContent (weather);

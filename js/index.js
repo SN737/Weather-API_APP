@@ -6,7 +6,7 @@ import { handleWeatherByGeolacation } from "./geo.js";
 
 
 const app = async () => {
-    const weather = await getWeatherData (`Сочи`);
+    const weather = await getWeatherData (JSON.parse(localStorage.getItem('city')) || `Сочи`);
     
     const header = createHeader(weather.name);
     const content = createContent(weather);

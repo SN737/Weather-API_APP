@@ -39,6 +39,12 @@ export const createHeader = (city) => {
     unitsC.textContent = 'C';
     unitsF.textContent = 'F';
 
+    cityChange.addEventListener('click', () =>{
+        headerCity.innerHTML = '';
+        searchBlock.append(searchInput, searchBtn, errorBlock);
+        headerCity.append(searchBlock);
+    })
+
     cityLocation.addEventListener('click', handleWeatherByGeolacation);
 
 
