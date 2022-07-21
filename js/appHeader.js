@@ -1,4 +1,5 @@
 import { handleWeatherByGeolacation } from "./geo.js";
+//mport { getWeatherData } from "./api.js";
 
 
 export const createHeader = (city) => {
@@ -43,6 +44,28 @@ export const createHeader = (city) => {
         headerCity.innerHTML = '';
         searchBlock.append(searchInput, searchBtn, errorBlock);
         headerCity.append(searchBlock);
+    });
+
+    const showError = (message) => {
+        errorBlock.classList.add('show-error');
+        errorBlock.textContent = message;
+    }
+
+    searchBtn.addEventListener('click', async () => {
+        if (!searchInput.value) {
+            return;
+        }
+
+        try {
+            const = await getWeatherData(searchInput.value);
+
+            if (getWeatherData.message) {
+                showError(weather.message);
+            }
+        }catch (error) {
+
+        }
+
     })
 
     cityLocation.addEventListener('click', handleWeatherByGeolacation);
