@@ -1,5 +1,7 @@
 import { handleWeatherByGeolacation } from "./geo.js";
-//mport { getWeatherData } from "./api.js";
+import { checkCityExistance, resetWeatherContent } from "./helper.js";
+import { getWeatherData } from "./api.js";
+
 
 
 export const createHeader = (city) => {
@@ -57,12 +59,16 @@ export const createHeader = (city) => {
         }
 
         try {
-            const = await getWeatherData(searchInput.value);
+            const weather = await getWeatherData(searchInput.value);
 
             if (getWeatherData.message) {
                 showError(weather.message);
+               
             }
+            resetWeatherContent(weather.name, weather);
         }catch (error) {
+            console.log(error, 'Не верно указан город')
+            checkCityExistance();
 
         }
 

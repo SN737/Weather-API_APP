@@ -1,5 +1,8 @@
+import { getWeatherData } from "./api.js";
 import { createContent } from "./appContent.js";
 import { createHeader } from "./appHeader.js";
+import { app } from "./index.js";
+
 
 
 export const directionOfwWind = (degree) => {
@@ -25,3 +28,11 @@ export const resetWeatherContent = (city, weather) => {
     const content = createContent (weather);
     document.body.append(header, content);
 };
+
+
+export const checkCityExistance = () => {
+    if (localStorage.getItem ('city') == 'undefined') {
+        console.log ('Чэээ!?')
+        app();
+    }
+}
