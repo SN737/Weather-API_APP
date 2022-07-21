@@ -13,6 +13,7 @@ export const createContent = (data) => {
     const description = document.createElement('p');
     const weatherInfo = document.createElement('div');
     const weatherInfoList = document.createElement('ul');
+    const tempFeels = document.createElement('div');
     const weatherInfoWind = document.createElement('li');
     const weatherInfoPressure = document.createElement('li');
     const weatherInfoHumidity = document.createElement('li');
@@ -25,6 +26,7 @@ export const createContent = (data) => {
     temperature.classList.add('weather__temperature');
     units.classList.add('weather__units');
     description.classList.add('weather__description');
+    tempFeels.classList.add('temp__feels');
     weatherInfo.classList.add('weather-info');
     weatherInfoList.classList.add('weather-info__list');
     weatherInfoWind.classList.add('weather-info__item');
@@ -35,7 +37,7 @@ export const createContent = (data) => {
     
     temperature.textContent = Math.round(data.main.temp*10)/10;
   
-  
+    //tempFeels.textContent = data.main.feels_like;
           
     
 
@@ -59,6 +61,13 @@ export const createContent = (data) => {
         return p;
     };
 
+  
+
+    tempFeels.append (
+        createWeatherItemTitle('Ощущается'),
+        createWeatherItemContent(data.main.feels_like + '\u00B0')
+    );
+
     weatherInfoWind.append(
         createWeatherItemTitle('Ветер'),
         createWeatherItemContent(Math.round(data.wind.speed*10)/10 + ' м/с, ' + directionOfwWind(data.wind.deg))
@@ -81,7 +90,7 @@ export const createContent = (data) => {
 
     main.append(section);
     section.append(container);
-    container.append(inner, description, weatherInfo);
+    container.append(inner, description, tempFeels, weatherInfo);
     inner.append(iconBloc, temperature, units);
     weatherInfo.append(weatherInfoList);
     weatherInfoList.append(
