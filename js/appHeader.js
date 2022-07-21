@@ -1,6 +1,7 @@
 import { handleWeatherByGeolacation } from "./geo.js";
 import { checkCityExistance, resetWeatherContent } from "./helper.js";
 import { getWeatherData } from "./api.js";
+import { app } from "./index.js";
 
 
 
@@ -53,6 +54,21 @@ export const createHeader = (city) => {
         errorBlock.textContent = message;
     }
 
+    window.addEventListener ('click', (e) => {
+        if (e.target == searchInput || e.target == searchBtn || e.target == cityChange) {
+            return
+        } else {
+            headerCity.innerHTML = '';
+            errorBlock.classList.remove('show-error');
+            searchInput.value = '';
+            headerCity.append(cityName, cityInner)
+
+        }
+
+       
+
+    })
+
     searchBtn.addEventListener('click', async () => {
         if (!searchInput.value) {
             return;
@@ -61,8 +77,10 @@ export const createHeader = (city) => {
         try {
             const weather = await getWeatherData(searchInput.value);
 
-            if (getWeatherData.message) {
+            if (weather.message) {
+                console.log('Не верно указан город2')
                 showError(weather.message);
+                return;
                
             }
             resetWeatherContent(weather.name, weather);
