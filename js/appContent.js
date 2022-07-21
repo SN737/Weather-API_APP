@@ -1,5 +1,6 @@
-import { directionOfwWind } from "./helper.js";
+import { directionOfwWind, fToC } from "./helper.js";
 import { capitalizeFirstLetter } from "./helper.js";
+//import { fToC } from "./helper.js";
 
 export const createContent = (data) => {
     const main = document.createElement('main');
@@ -31,7 +32,13 @@ export const createContent = (data) => {
     weatherInfoPressure.classList.add('weather-info__item');
     weatherInfoClouds.classList.add('weather-info__item');
 
-    temperature.textContent = Math.round(data.main.temp*10)/10; 
+    
+    temperature.textContent = Math.round(data.main.temp*10)/10;
+  
+  
+          
+    
+
      // подумать об нормальном округлении температуры до десятых - done;
     description.textContent = capitalizeFirstLetter(data.weather[0].description);
     //description.textContent = data.weather[0].description;

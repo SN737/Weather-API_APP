@@ -32,7 +32,15 @@ export const resetWeatherContent = (city, weather) => {
 
 export const checkCityExistance = () => {
     if (localStorage.getItem ('city') == 'undefined') {
-        console.log ('Чэээ!?')
         app();
     }
+}
+
+
+export const  cToF = (celsius) => {
+    return celsius * 9 / 5 + 32;
+}
+
+export const  fToC = (farenheit) => {
+    return (farenheit -32) * 5 / 9;
 }

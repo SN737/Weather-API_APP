@@ -1,7 +1,7 @@
 import { handleWeatherByGeolacation } from "./geo.js";
-import { checkCityExistance, resetWeatherContent } from "./helper.js";
+import { checkCityExistance, cToF, fToC, resetWeatherContent } from "./helper.js";
 import { getWeatherData } from "./api.js";
-import { app } from "./index.js";
+
 
 
 
@@ -78,19 +78,47 @@ export const createHeader = (city) => {
             const weather = await getWeatherData(searchInput.value);
 
             if (weather.message) {
-                console.log('Не верно указан город2')
                 showError(weather.message);
                 return;
                
             }
             resetWeatherContent(weather.name, weather);
         }catch (error) {
-            console.log(error, 'Не верно указан город')
             checkCityExistance();
 
         }
 
     })
+    
+    unitsC.addEventListener('click' , () => {
+        if (unitsC.classList.contains('unit-current')) {
+            return;
+        } else { 
+            unitsC.classList.add('unit-current');
+            unitsF.classList.remove('unit-current')
+            document.querySelector('.weather__units').textContent = 'o';
+            const temperature = document.querySelector('.weather__temperature');
+            const convertedTemp = fToC(+temperature.textContent);
+            temperature.textContent = Math.round(convertedTemp*10)/10
+
+        }
+    } );
+
+    unitsF.addEventListener('click' , () => {
+        if (unitsF.classList.contains('unit-current')) {
+            return;
+        } else { 
+            unitsF.classList.add('unit-current');
+            unitsC.classList.remove('unit-current')
+            document.querySelector('.weather__units').textContent = ' F';
+            const temperature = document.querySelector('.weather__temperature');
+            const convertedTemp = cToF(+temperature.textContent);
+            temperature.textContent = Math.round(convertedTemp*10)/10
+
+
+        }
+    } );
+
 
     cityLocation.addEventListener('click', handleWeatherByGeolacation);
 
@@ -102,6 +130,8 @@ export const createHeader = (city) => {
     headerUnits.append(unitsC, unitsF);
 
     return header;
+
+   
 
 
 };

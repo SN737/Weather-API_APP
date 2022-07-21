@@ -20,24 +20,13 @@ export const handleWeatherByGeolacation = () => {
        
 
 
-        console.log('получилось',result.features[0].properties.city,  result);
+       
         resetWeatherContent(result.features[0].properties.city, weather);
 
-       /* .then( response => response.json())
-        .then(result => {
-          if (result.features.length) {
-            console.log(result.features[0].properties.formatted);
-          } else {
-            console.log("No address found");
-          }
-          console.log (result);
-        });
-*/
-
-        
+               
     };
     const error = (err) => {
-        console.log (err.code + ' !ашиПке выШел ' + err.message);
+        console.log (err.code + 'ошибка' + err.message);
     };
     navigator.geolocation.getCurrentPosition(success, error, options);
 
