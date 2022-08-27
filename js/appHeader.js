@@ -128,10 +128,5 @@ export const createHeader = (city) => {
     cityInner.append(cityChange, cityLocation);
     headerCity.append(cityName, cityInner);
     headerUnits.append(unitsC, unitsF);
-
     return header;
-
-   
-
-
 };

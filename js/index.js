@@ -3,8 +3,6 @@ import { createHeader } from "./appHeader.js";
 import { createContent } from "./appContent.js";
 import { handleWeatherByGeolacation } from "./geo.js";
 
-
-
  export const app = async () => {
 
     if (localStorage.getItem ('city') == 'undefined') {
